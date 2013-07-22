@@ -14,6 +14,7 @@ class TestKosaraju(unittest.TestCase):
     """test kosarajus Algorithm against files contained in data"""
 
     def setUp(self):
+        # if you have globals they have to be reset before each test run
         kosarajus.s = None # leaders in 2nd pass
         kosarajus.explored = set()
         kosarajus.leaders = Counter()
@@ -27,12 +28,6 @@ class TestKosaraju(unittest.TestCase):
         result = kosarajus.kosaraju('../data/test_data_from_class_kosaraju.txt')
         self.assertSequenceEqual(expected, result)
 
-    # def test_unconnected(self):
-    #     """ not actual sure about this one"""
-    #     expected = "1,1,0,0,0"
-    #     result = kosarajus.kosaraju('../data/test_data_kosaraju_unconnected.txt')
-    #     self.assertSequenceEqual(expected, result)
-
     def test_data_kosaraju_Stecko_case_1(self):
         expected = '3,3,1,1,0'
         result = kosarajus.kosaraju('../data/test_data_kosaraju_Stecko_case_1.txt')
@@ -41,6 +36,11 @@ class TestKosaraju(unittest.TestCase):
     def test_data_kosaraju_Stecko_case_2(self):
         expected = '7,1,0,0,0'
         result = kosarajus.kosaraju('../data/test_data_kosaraju_Stecko_case_2.txt')
+        self.assertSequenceEqual(expected, result)
+
+    def test_wiki_example(self):
+        expected = "3,3,2,0,0"
+        result = kosarajus.kosaraju('../data/test_wiki_example.txt')
         self.assertSequenceEqual(expected, result)
 
 
