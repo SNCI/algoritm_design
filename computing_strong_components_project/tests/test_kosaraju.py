@@ -19,3 +19,7 @@ class TestKosaraju(unittest.TestCase):
         result = kosaraju('../data/test_data_from_class_kosaraju.txt')
         self.assertSequenceEqual(expected, result)
 
+
+
+if __name__ == '__main__':
+    unittest.main()
