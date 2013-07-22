@@ -44,5 +44,6 @@ quick_sort_project/test.txt
 quick_sort_project/__pycache__
 min_cut_project/min_cut.py
 
-computing_strong_components_project/main/
+computing_strong_components_project/notes.txt
+computing_strong_components_project/kosarajus.py
 
