@@ -1,0 +1,7 @@
+Check the readme for specifics
+
+1.the output for  the file test_data_from_class.txt should be:
+"3,3,3,0,0"
+
+take a look at the accompanying pdf files or review the lecture to 
+understand why
