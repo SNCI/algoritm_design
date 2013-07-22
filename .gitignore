@@ -46,4 +46,6 @@ min_cut_project/min_cut.py
 
 computing_strong_components_project/notes.txt
 computing_strong_components_project/kosarajus.py
+computing_strong_components_project/compare.py
+computing_strong_components_project/data/SCC.txt
 
