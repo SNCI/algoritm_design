@@ -15,6 +15,7 @@ class TestKosaraju(unittest.TestCase):
 
     def setUp(self):
         # if you have globals they have to be reset before each test run
+
         kosarajus.s = None # leaders in 2nd pass
         kosarajus.explored = set()
         kosarajus.leaders = Counter()
@@ -41,6 +42,11 @@ class TestKosaraju(unittest.TestCase):
     def test_wiki_example(self):
         expected = "3,3,2,0,0"
         result = kosarajus.kosaraju('../data/test_wiki_example.txt')
+        self.assertSequenceEqual(expected, result)
+
+    def test_Elenas_case_1(self):
+        expected = "3,2,2,2,1"
+        result = kosarajus.kosaraju('../data/test_Elenas_case_1.txt')
         self.assertSequenceEqual(expected, result)
 
 
