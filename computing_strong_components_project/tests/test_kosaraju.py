@@ -49,6 +49,12 @@ class TestKosaraju(unittest.TestCase):
         result = kosarajus.kosaraju('../data/test_Elenas_case_1.txt')
         self.assertSequenceEqual(expected, result)
 
+    def test_Naveed_Alis_case_1(self):
+        expected = "6,3,2,1,0"
+        result = kosarajus.kosaraju('../data/test_Naveed_alis_case_1.txt')
+        self.assertSequenceEqual(expected, result)
+
+
 
 
 if __name__ == '__main__':
