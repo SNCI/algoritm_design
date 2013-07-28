@@ -21,8 +21,8 @@ class TestDijkstra(unittest.TestCase):
         start, finish = 1, 4
         expected = 2
         G = file_to_graph(file_name)
-        final_dist = dijkstra(G,1)
-        result = final_dist[4]
+        final_dist = dijkstra(G,start)
+        result = final_dist[finish]
         self.assertEqual(expected, result)
 
     def test_medium_example(self):
@@ -30,9 +30,19 @@ class TestDijkstra(unittest.TestCase):
         start, finish = 1,7
         expected = 5
         G = file_to_graph(file_name)
-        final_dist = dijkstra(G,1)
-        result = final_dist[7]
+        final_dist = dijkstra(G,start)
+        result = final_dist[finish]
         self.assertEqual(expected, result)
+
+    def test_large_example(self):
+        file_name = '../data/large.txt'
+        start, finish = 1,5
+        expected = 20
+        G = file_to_graph(file_name)
+        final_dist = dijkstra(G,start)
+        result = final_dist[finish]
+        self.assertEqual(expected, result)
+
 
 if __name__ == '__main__':
     unittest.main()
