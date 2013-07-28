@@ -10,6 +10,7 @@ Description : test dijkstra to find shortest cost path
 
 import unittest
 from dijkstra_project.main.dijkstra import dijkstra
+from dijkstra_project.main.tools import file_to_graph
 
 class TestDijkstra(unittest.TestCase):
     """Test case docstring"""
@@ -17,8 +18,21 @@ class TestDijkstra(unittest.TestCase):
 
     def test_small_example(self):
         file_name = '../data/small.txt'
-        expected = 
-        pass
+        start, finish = 1, 4
+        expected = 2
+        G = file_to_graph(file_name)
+        final_dist = dijkstra(G,1)
+        result = final_dist[4]
+        self.assertEqual(expected, result)
+
+    def test_medium_example(self):
+        file_name = '../data/medium.txt'
+        start, finish = 1,7
+        expected = 5
+        G = file_to_graph(file_name)
+        final_dist = dijkstra(G,1)
+        result = final_dist[7]
+        self.assertEqual(expected, result)
 
 if __name__ == '__main__':
     unittest.main()
