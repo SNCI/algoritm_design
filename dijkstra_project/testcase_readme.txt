@@ -1,11 +1,11 @@
 Test Cases assignment 5 - dijkstra's algorithm
 
-Please post only testcases
+Testcases are below, i promise but first something amazing...
 
-Additional I have created three scripts that might be of use to you,
+I have created three tools that might be of use to you,
 they along, with my unitests and datafiles are located at my github repo here.
 
-File --------------------->use ------------------->         returns:
+Tool --------------------->use ------------------->         returns:
 dijkstra.pyc      : $python Dijkstra start finish      shortest cost path
 vizualizer.py     : $python file_name                 visualization of graph
 test_generator    : $python test_generator.py         graphs/result and graphs
@@ -15,16 +15,16 @@ Notes:
 python2.7, may not work with version 3
 $: From terminal
 
-Dijkstra:
+dijkstra.pyc: (notice its a .pyc so you can't see the orginal code)
 start: int: the starting vertex
 finish: int: the vertex to which you want to find the shortest cost path
 shortest cost path: int
 
-vizualizer
+vizualizer.py
 file_name: str: a file of the same specifications as our assignment file
 visualization of graph: file: .png
 
-test_generator:
+test_generator: <- COOLEST THING HERE
 when you run python test_generator it will let you choose the number of graphs
 and the size you wish to create. Then it "magical" will create folder "graphs"
 that will contain result.txt. result.txt will tell you which graph in they
@@ -33,6 +33,8 @@ graph folder failed.
 Example: $python test_generator
 how many tests? 3
 what size graph? 10
+
+Creates this...
 
    graphs/ <- folder created
       graph0.png
@@ -43,10 +45,10 @@ what size graph? 10
       graph2.txt
       results.txt <- results -> 
 
-if you open results..
-Graph0 failed to find lowest cost 48 with path [9, 4, 7]
-Graph1 failed to find lowest cost 37 with path [9, 7]
-Graph2 failed to find lowest cost 29 with path [8, 6, 1, 3, 0]
+if you open results.txt
+    Graph0 failed to find lowest cost 27 with path [15, 17] with start point 15 and finish 17
+    Graph1 failed to find lowest cost 31 with path [0, 9] with start point 0 and finish 9
+    Graph2 failed to find lowest cost 45 with path [0, 7, 17] with start point 0 and finish 17
 
 then take a look at graph0.png for the visual aid
 
@@ -56,10 +58,12 @@ If you are using python you can modify test_generator:
     from dijkstra import dijkstra #FIXME change me to use your algorithm
 
 to test your algorithm against
+
                     TEST CASES
 ****************************************************************
-
 Test Case small:
+
+Picture:
 
 input:
     1 2,5 3,1
@@ -71,6 +75,7 @@ input:
     finish = 4
 
 expected cost: 2
+
 ****************************************************************
 Test Case medium:
 input:
@@ -85,7 +90,14 @@ input:
     finish = 7
 
 expected cost: 5
+
 ****************************************************************
+Test Case Large:
+
+Picture:
+
+input:
+
 0 1,28 2,4 3,53 4,95 5,59 7,48 8,84 10,27 11,7 12,91 13,96
 1 0,28 2,79 5,30 7,59 8,62 9,20 11,15 12,16 13,96
 2 0,4 1,79 3,80 5,19 6,74 8,59 10,80 11,81 12,65 13,7 14,13
@@ -102,6 +114,12 @@ expected cost: 5
 13 0,96 1,96 2,7 3,92 4,95 5,68 6,34 9,79 11,87 12,46
 14 2,13 4,19 5,22 7,9 10,78 12,63
 
+    start = 13
+    finish = 7
+
+expected cost: 5
+
+****************************************************************
 
 
 
