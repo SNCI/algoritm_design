@@ -1,0 +1,1 @@
+Graph0 failed to find lowest cost 26 with path [13, 2, 5] with start point 13 and finish 5

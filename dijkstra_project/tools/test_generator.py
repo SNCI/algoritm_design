@@ -66,6 +66,7 @@ def run():
     from random import choice
     from tools import file_to_graph #FIXME change me to use your algorithm
     from dijkstra import dijkstra #FIXME change me to use your algorithm
+    import shutil
     def FAIL(G,v,f): return None #FIXME remove
     dijkstra = FAIL             #FIXME remove
     file_to_graph = file_to_graph #FIXME so its dijkstra = your algorithm
@@ -75,6 +76,8 @@ def run():
     size = input()
     test_index = 0
     folder = 'graphs'
+    if os.path.exists(folder):
+        shutil.rmtree('graphs/') # note we delete the folder everytime
     if not os.path.exists(folder):
         os.makedirs(folder)
     for x in xrange(num_tests):
@@ -89,8 +92,8 @@ def run():
         if dijkstra(NG, start, finish) != cost:
             path = nx.dijkstra_path(G, start, finish)
             visulizer(G,test_index)
-            result = 'Graph{0} failed to find lowest cost {1} with path {2}\n'.\
-                format(test_index, cost, path)
+            result = 'Graph{0} failed to find lowest cost {1} with path {2} with start point {3} and finish {4}\n'.\
+                format(test_index, cost, path, start, finish)
         else:
             result = 'Graph{0} passed!\n'
         with open('graphs/results.txt', 'a') as results:

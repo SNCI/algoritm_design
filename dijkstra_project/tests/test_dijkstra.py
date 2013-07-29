@@ -36,8 +36,8 @@ class TestDijkstra(unittest.TestCase):
 
     def test_large_example(self):
         file_name = '../data/large.txt'
-        start, finish = 1,5
-        expected = 20
+        start, finish = 13,5
+        expected = 26
         G = file_to_graph(file_name)
         final_dist = dijkstra(G,start)
         result = final_dist[finish]

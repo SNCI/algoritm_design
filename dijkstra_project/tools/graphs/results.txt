@@ -1,3 +1,0 @@
-Graph0 failed to find lowest cost 48 with path [9, 4, 7]
-Graph1 failed to find lowest cost 37 with path [9, 7]
-Graph2 failed to find lowest cost 29 with path [8, 6, 1, 3, 0]
