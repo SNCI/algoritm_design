@@ -2,51 +2,101 @@
        File : test_generator.py
      Author : Drew Verlee
        Date : 28.07.13.
+      Email : drew.verlee@gmail.com
      GitHub : https://github.com/Midnightcoffee/
-Description : to create a graph file
+Description : creates a random graph file
 """
 
-from collections import defaultdict as dd
+import networkx as nx
 from random import randrange as rr
-def graph_file_gen(file_name, size):
-    """creates a file, that contains the contents of a graph with
-    the first column as a node and the subsequent columns as neighbor,weight
-    example:
+import pylab
 
-    1 2,3
-    2 1,3
+def random_weighted_graph(size):
+    """Creates random graph
 
-    :file_name: file object:
-    :size: how many verticies, recommended over 50
-    :creates: a file named file_name in current directory
+    :size: int: number of nodes in graph
+    :returns: nx.Graph object
 
     """
-    G = dd(dict)
-    with open(file_name, 'w') as f:
-        for node in xrange(1, size):
-            f.write(str(node))
-            high = rr(size//10, size)/2
-            # make every node pass through 1
-            if node != 1: f.write(' ' + str(1) + ',' + str(1))
-            update_graph(G, node, 1, 1)
-            for i in xrange(high):
-                x = rr(size)
-                if x != node:
-                    if x in G and node in G[x]:
-                        weight = G[x][node]
-                    else:
-                        weight = rr(1,100)
-                    update_graph(G, node, x, weight)
-                    f.write(' ' + str(x) + ',' + str(weight))
-            f.write('\n')
+    nodes = size
+    edges = nodes* (nodes/3)
+    MAX_WEIGHT = 100
+    G = nx.dense_gnm_random_graph(n=nodes, m=edges)
+    # give our graph some random weights
+    for edge in G.edges(): G.add_edge(*edge, weight = rr(MAX_WEIGHT))
+    assert nx.is_connected(G) == True # make sure its connected
+    return G
 
-def update_graph(G, v1, v2, weight):
-    G[v1][v2] = weight
-    G[v2][v1] = weight
+def graph_to_file(G, file_name="graph"):
+    """creates random graph
+
+    :G: networkx Graph object
+    :creates: a graph file
+
+    """
+
+    graph_file = open(file_name, 'w')
+    for node in G:
+        graph_file.write(str(node))
+        for neighbor in G[node]:
+            graph_file.write(' ' +','.join(
+                (str(neighbor),str(G[node][neighbor]['weight']))))
+        graph_file.write('\n')
+    graph_file.close()
+
+def visulizer(G, i=0):
+    """creates a visual aid
+
+    :G: nx object
+    :creates: file object
+
+    """
+    pos=nx.circular_layout(G)
+    pylab.figure(2)
+    nx.draw(G,pos)
+    edge_labels=dict([((u,v,),d['weight'])
+                for u,v,d in G.edges(data=True)])
+    nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
+    pylab.savefig('graphs/graph{0}'
+            .format(i).replace('txt','png'))
+
+def run():
+    """ generates some files, graphs and store there results in graphs/result"""
+    import os
+    from random import choice
+    from tools import file_to_graph #FIXME change me to use your algorithm
+    from dijkstra import dijkstra #FIXME change me to use your algorithm
+    def FAIL(G,v,f): return None #FIXME remove
+    dijkstra = FAIL             #FIXME remove
+    file_to_graph = file_to_graph #FIXME so its dijkstra = your algorithm
+    print('number of tests?'),
+    num_tests = input()
+    print('graph size ? '),
+    size = input()
+    test_index = 0
+    folder = 'graphs'
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    for x in xrange(num_tests):
+        test_file = 'graphs/graph' + str(test_index) + '.txt'
+        G = random_weighted_graph(size)
+        graph_to_file(G, test_file)
+        start =  choice(G.nodes())
+        finish = choice(G.nodes())
+        while start == finish: finish = choice(G.nodes())
+        cost = nx.dijkstra_path_length(G, start, finish)
+        NG = file_to_graph(test_file)
+        if dijkstra(NG, start, finish) != cost:
+            path = nx.dijkstra_path(G, start, finish)
+            visulizer(G,test_index)
+            result = 'Graph{0} failed to find lowest cost {1} with path {2}\n'.\
+                format(test_index, cost, path)
+        else:
+            result = 'Graph{0} passed!\n'
+        with open('graphs/results.txt', 'a') as results:
+            results.write(result)
+        test_index += 1
 
 if __name__ == '__main__':
-    import sys
-    file_name, size = sys.argv[1:]
-    graph_file_gen('.'.join((file_name,'txt')), int(size))
-
+    run()
 
