@@ -33,7 +33,7 @@ def visualize_weighted_graph(file_name):
                     v2, weight = neighbor.split(',')
                     G.add_edge(v1, v2, weight=int(weight))
 
-    pos=nx.spring_layout(G)
+    pos=nx.circular_layout(G)
     pylab.figure(2)
     nx.draw(G,pos)
     edge_labels=dict([((u,v,),d['weight'])
