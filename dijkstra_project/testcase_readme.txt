@@ -6,7 +6,6 @@ I have created three tools that might be of use to you,
 they along, with my unitests and datafiles are located at my github repo here.
 
 Tool --------------------->use ------------------->         returns:
-dijkstra.pyc      : $python Dijkstra start finish      shortest cost path
 vizualizer.py     : $python file_name                 visualization of graph
 test_generator    : $python test_generator.py         graphs/result and graphs
 
@@ -15,16 +14,11 @@ Notes:
 python2.7, may not work with version 3
 $: From terminal
 
-dijkstra.pyc: (notice its a .pyc so you can't see the orginal code)
-start: int: the starting vertex
-finish: int: the vertex to which you want to find the shortest cost path
-shortest cost path: int
-
 vizualizer.py
 file_name: str: a file of the same specifications as our assignment file
 visualization of graph: file: .png
 
-test_generator: <- COOLEST THING HERE
+test_generator: 
 when you run python test_generator it will let you choose the number of graphs
 and the size you wish to create. Then it "magical" will create folder "graphs"
 that will contain result.txt. result.txt will tell you which graph in they
@@ -45,7 +39,7 @@ Creates this...
       graph2.txt
       results.txt <- results -> 
 
-if you open results.txt
+if you open results.txt you get the aforementioned results..
     Graph0 failed to find lowest cost 27 with path [15, 17] with start point 15 and finish 17
     Graph1 failed to find lowest cost 31 with path [0, 9] with start point 0 and finish 9
     Graph2 failed to find lowest cost 45 with path [0, 7, 17] with start point 0 and finish 17
