@@ -49,3 +49,5 @@ computing_strong_components_project/kosarajus.py
 computing_strong_components_project/compare.py
 computing_strong_components_project/data/SCC.txt
 
+dijkstra_project/main/dijkstra.py
+dijkstra_project/main/tools.py
