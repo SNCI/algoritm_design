@@ -1,1 +1,5 @@
-Graph0 failed to find lowest cost 37 with path [7, 2, 6, 3, 0, 4] with start point 7 and finish 4
+Graph0 failed to find lowest cost 9 with path [28, 16, 6] with start point 28 and finish 6
+Graph1 failed to find lowest cost 0 with path [5, 46] with start point 5 and finish 46
+Graph2 failed to find lowest cost 17 with path [10, 23, 46, 24] with start point 10 and finish 24
+Graph3 failed to find lowest cost 9 with path [39, 28, 10] with start point 39 and finish 10
+Graph4 failed to find lowest cost 0 with path [45, 31] with start point 45 and finish 31

@@ -2,7 +2,6 @@
        File : test_generator.py
      Author : Drew Verlee
        Date : 28.07.13.
-      Email : drew.verlee@gmail.com
      GitHub : https://github.com/Midnightcoffee/
 Description : creates a random graph file
 """
@@ -51,7 +50,7 @@ def visulizer(G, i=0):
     :creates: file object
 
     """
-    pos=nx.circular_layout(G)
+    pos=nx.spring_layout(G)
     pylab.figure(2)
     nx.draw(G,pos)
     edge_labels=dict([((u,v,),d['weight'])
@@ -65,7 +64,7 @@ def run():
     import os
     from random import choice
     from tools import file_to_graph #FIXME change me to use your algorithm
-    from dijkstra import dijkstra #FIXME change me to use your algorithm
+    # from dijkstra import dijkstra #FIXME change me to use your algorithm
     import shutil
     def FAIL(G,v,f): return None #FIXME remove
     dijkstra = FAIL             #FIXME remove
